@@ -14,6 +14,7 @@ dependencies:
   flutter_markdown_plus: ^1.0.12
   path: ^1.9.1
   path_provider: ^2.1.6
+  shared_preferences: ^2.5.5
   # sqlite3 pinned to 2.x: the 3.x line uses Dart native build hooks, which
   # build_runner cannot compile against yet (breaks drift codegen).
   sqlite3: ^2.9.0
@@ -26,11 +27,32 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   drift_dev: '>=2.26.0 <3.0.0'
   build_runner: '>=2.4.0 <3.0.0'
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 flutter:
   uses-material-design: true
   assets:
+    - assets/branding/
     - assets/content/
     - assets/content/oop/
     - assets/content/oop/chapters/
     - assets/content/oop/quizzes/
+
+# Regenerate with: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  image_path: assets/branding/icon_full.png
+  adaptive_icon_background: "#00696B"
+  adaptive_icon_foreground: assets/branding/icon_fg.png
+  adaptive_icon_monochrome: assets/branding/icon_fg.png
+
+# Regenerate with: dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#00696B"
+  color_dark: "#003638"
+  image: assets/branding/splash_logo.png
+  android_12:
+    color: "#00696B"
+    color_dark: "#003638"
+    image: assets/branding/splash_logo.png
