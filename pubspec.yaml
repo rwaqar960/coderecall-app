@@ -38,6 +38,9 @@ flutter:
     - assets/content/oop/
     - assets/content/oop/chapters/
     - assets/content/oop/quizzes/
+    - assets/content/dsa/
+    - assets/content/dsa/chapters/
+    - assets/content/dsa/quizzes/
 
 # Regenerate with: dart run flutter_launcher_icons
 flutter_launcher_icons:
