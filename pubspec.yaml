@@ -7,11 +7,13 @@ environment:
   sdk: ^3.10.1
 
 dependencies:
+  archive: ^4.0.9
   drift: '>=2.26.0 <3.0.0'
   drift_flutter: '>=0.2.4 <0.4.0'
   flutter:
     sdk: flutter
   flutter_markdown_plus: ^1.0.12
+  http: ^1.6.0
   path: ^1.9.1
   path_provider: ^2.1.6
   shared_preferences: ^2.5.5
