@@ -41,6 +41,9 @@ flutter:
     - assets/content/dsa/
     - assets/content/dsa/chapters/
     - assets/content/dsa/quizzes/
+    - assets/content/algorithms/
+    - assets/content/algorithms/chapters/
+    - assets/content/algorithms/quizzes/
 
 # Regenerate with: dart run flutter_launcher_icons
 flutter_launcher_icons:
