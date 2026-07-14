@@ -118,6 +118,7 @@ IconData courseIcon(String courseId) => switch (courseId) {
       'dsa' => Icons.account_tree_outlined,
       'algorithms' => Icons.functions,
       'flutter' => Icons.flutter_dash,
+      'kotlin' => Icons.code,
       _ => Icons.school_outlined,
     };
 
