@@ -4,6 +4,7 @@ import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import '../../main.dart';
 import '../models/course.dart';
 import '../models/quiz.dart';
+import '../theme/app_theme.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key, required this.course, required this.chapter});
@@ -108,21 +109,13 @@ class _QuizScreenState extends State<QuizScreen> {
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
+          runSpacing: 8,
           children: [
-            Chip(
-              label: Text(question.difficulty),
-              visualDensity: VisualDensity.compact,
-            ),
+            Pill(label: question.difficulty, emphasis: true),
             if (question.type == QuestionType.multi)
-              const Chip(
-                label: Text('select all that apply'),
-                visualDensity: VisualDensity.compact,
-              ),
+              const Pill(label: 'select all that apply'),
             if (question.type == QuestionType.codeReview)
-              const Chip(
-                label: Text('code review'),
-                visualDensity: VisualDensity.compact,
-              ),
+              const Pill(label: 'code review'),
           ],
         ),
         const SizedBox(height: 8),
@@ -276,19 +269,30 @@ class _ResultView extends StatelessWidget {
     final theme = Theme.of(context);
     final total = quiz.questions.length;
     final passed = total > 0 && score / total >= quiz.passScore;
+    final accent = passed ? theme.colorScheme.primary : theme.colorScheme.error;
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              passed ? Icons.emoji_events_outlined : Icons.replay,
-              size: 64,
-              color: passed ? theme.colorScheme.primary : theme.colorScheme.error,
+            Container(
+              width: 88,
+              height: 88,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: accent.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(24),
+              ),
+              child: Icon(
+                passed ? Icons.emoji_events_outlined : Icons.replay,
+                size: 44,
+                color: accent,
+              ),
             ),
-            const SizedBox(height: 16),
-            Text('$score / $total', style: theme.textTheme.displaySmall),
+            const SizedBox(height: 20),
+            Text('$score / $total',
+                style: theme.textTheme.displaySmall!.copyWith(fontWeight: FontWeight.w800)),
             const SizedBox(height: 8),
             Text(
               passed
@@ -297,7 +301,7 @@ class _ResultView extends StatelessWidget {
               style: theme.textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 28),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

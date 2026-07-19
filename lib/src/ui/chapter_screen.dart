@@ -3,6 +3,7 @@ import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 import '../../main.dart';
 import '../models/course.dart';
+import '../theme/app_theme.dart';
 import 'quiz_screen.dart';
 
 class ChapterScreen extends StatefulWidget {
@@ -50,15 +51,8 @@ class _ChapterScreenState extends State<ChapterScreen> {
               Wrap(
                 spacing: 8,
                 children: [
-                  Chip(
-                    avatar: const Icon(Icons.schedule, size: 18),
-                    label: Text('${chapter.minutes} min'),
-                    visualDensity: VisualDensity.compact,
-                  ),
-                  Chip(
-                    label: Text(chapter.level),
-                    visualDensity: VisualDensity.compact,
-                  ),
+                  Pill(label: '${chapter.minutes} min', emphasis: true),
+                  Pill(label: chapter.level),
                 ],
               ),
               const SizedBox(height: 8),

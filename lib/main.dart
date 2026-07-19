@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'src/data/content_repository.dart';
 import 'src/data/progress_db.dart';
 import 'src/data/settings_controller.dart';
-import 'src/ui/course_list_screen.dart';
+import 'src/theme/app_theme.dart';
+import 'src/ui/home_screen.dart';
 import 'src/ui/landing_screen.dart';
 
 Future<void> main() async {
@@ -45,14 +46,6 @@ class AppScope extends InheritedWidget {
 class CodeRecallApp extends StatelessWidget {
   const CodeRecallApp({super.key});
 
-  static const seed = Color(0xFF00696B);
-
-  static ThemeData _theme(Brightness brightness) => ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: seed, brightness: brightness),
-        useMaterial3: true,
-        cardTheme: const CardThemeData(elevation: 0),
-      );
-
   @override
   Widget build(BuildContext context) {
     final settings = AppScope.of(context).settings;
@@ -61,11 +54,11 @@ class CodeRecallApp extends StatelessWidget {
       builder: (context, _) => MaterialApp(
         title: 'CodeRecall',
         debugShowCheckedModeBanner: false,
-        theme: _theme(Brightness.light),
-        darkTheme: _theme(Brightness.dark),
+        theme: AppTheme.of(Brightness.light),
+        darkTheme: AppTheme.of(Brightness.dark),
         themeMode: settings.themeMode,
         home: settings.onboardingSeen
-            ? const CourseListScreen()
+            ? const HomeScreen()
             : const LandingScreen(),
       ),
     );

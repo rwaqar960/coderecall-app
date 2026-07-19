@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
-import 'course_list_screen.dart';
+import 'home_screen.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -53,7 +53,7 @@ class _LandingScreenState extends State<LandingScreen> {
     await AppScope.of(context).settings.completeOnboarding();
     if (!mounted) return;
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const CourseListScreen()),
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
 
@@ -91,7 +91,7 @@ class _LandingScreenState extends State<LandingScreen> {
                           padding: const EdgeInsets.all(28),
                           decoration: BoxDecoration(
                             color: theme.colorScheme.primaryContainer,
-                            shape: BoxShape.circle,
+                            borderRadius: BorderRadius.circular(32),
                           ),
                           child: Icon(
                             slide.icon,
@@ -102,7 +102,8 @@ class _LandingScreenState extends State<LandingScreen> {
                         const SizedBox(height: 32),
                         Text(
                           slide.title,
-                          style: theme.textTheme.headlineSmall,
+                          style: theme.textTheme.headlineSmall!
+                              .copyWith(fontWeight: FontWeight.w800),
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 16),

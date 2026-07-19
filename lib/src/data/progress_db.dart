@@ -30,6 +30,17 @@ class ProgressDb extends _$ProgressDb {
       (select(chapterProgress)..where((t) => t.courseId.equals(courseId)))
           .watch();
 
+  /// The course whose chapter was most recently read or quizzed, across all
+  /// courses — powers the home screen's "continue learning" quick action.
+  Stream<String?> watchMostRecentCourseId() {
+    final query = select(chapterProgress)
+      ..orderBy([
+        (t) => OrderingTerm.desc(coalesce<DateTime>([t.lastQuizAt, t.readAt])),
+      ])
+      ..limit(1);
+    return query.watchSingleOrNull().map((row) => row?.courseId);
+  }
+
   Future<ChapterProgressData?> _find(String courseId, String chapterId) =>
       (select(chapterProgress)
             ..where((t) =>

@@ -46,6 +46,20 @@ flutter:
     - assets/content/algorithms/
     - assets/content/algorithms/chapters/
     - assets/content/algorithms/quizzes/
+  fonts:
+    # Bundled locally (not via google_fonts) so typography never needs a
+    # network fetch — this app is fully offline-first, always.
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+          weight: 800
 
 # Regenerate with: dart run flutter_launcher_icons
 flutter_launcher_icons:
